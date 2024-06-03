@@ -5,10 +5,10 @@ import userRoute from "../Backend/routes/userroute.js";
 import messageRoute from "../Backend/routes/messageroute.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { app, server } from "./socket/socket.js";
 // import bodyParser from "body-parser";
 
 dotenv.config({});
-const app = express();
 
 // app.use("/");
 
@@ -26,7 +26,7 @@ app.use(cors(corsOption));
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/message", messageRoute);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectDb();
   console.log(`server listen at port ${PORT}`);
 });
